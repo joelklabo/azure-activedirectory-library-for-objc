@@ -424,6 +424,7 @@ static ADAuthenticationRequest* s_modalRequest = nil;
 - (void)launchWebView:(NSString*)startUrl
       completionBlock:(void (^)(ADAuthenticationError*, NSURL*))completionBlock
 {
+    NSString *whitespaceTrimmedStartUrl = [startUrl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     [[ADWebAuthController sharedInstance] start:[NSURL URLWithString:startUrl]
                                             end:[NSURL URLWithString:_redirectUri]
                                     refreshCred:_refreshTokenCredential
